@@ -6,6 +6,9 @@ require("./lib/question")
 require("./lib/survey")
 require("pg")
 
+ActiveRecord::Base.establish_connection(ENV['postgres://ojxoykmbajegxt:VaLsFgxDBP4IagO003ipz0trrA@ec2-54-83-18-87.compute-1.amazonaws.com:5432/d4iutqa3du421l'])
+
+
 get('/') do
   erb(:index)
 end
