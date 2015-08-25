@@ -6,8 +6,8 @@ require("./lib/question")
 require("./lib/survey")
 require("pg")
 
-ActiveRecord::Base.establish_connection(ENV['postgres://dwktfcccddsevw:3Ka_xkNUEFNOzZzxToNHH6ypML@ec2-54-83-58-191.compute-1.amazonaws.com:5432/d8jr2mkt7jfb8f'])
-# ENV['RACK_ENV'] = 'test'
+# ActiveRecord::Base.establish_connection(ENV['postgres://dwktfcccddsevw:3Ka_xkNUEFNOzZzxToNHH6ypML@ec2-54-83-58-191.compute-1.amazonaws.com:5432/d8jr2mkt7jfb8f'])
+ENV['RACK_ENV'] = 'test'
 
 
 get('/') do
@@ -70,4 +70,14 @@ delete('/surveys/:id') do
   question.destroy()
   @survey = Survey.find(params.fetch('id').to_i())
   erb(:manage_survey)
+end
+
+get('/taker') do
+  @surveys = Survey.all()
+  erb(:view_survey)
+end
+
+get('/view_survey/:id') do
+  @survey = Survey.find(params.fetch('id').to_i())
+  erb(:take_survey)
 end

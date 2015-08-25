@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul>
+      <% @surveys.each() do |survey| %>
+        <li><a href="/view_survey/<%= survey.id() %>"><%= survey.description() %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
