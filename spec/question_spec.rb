@@ -9,4 +9,14 @@ describe(Question) do
       expect((test_question.survey())).to(eq(test_survey))
     end
   end
+
+    it('validates presence of description') do
+      question = Question.new({:description=> ''})
+      expect(question.save()).to(eq(false))
+    end
+
+    it('keep length of description under 50 characters') do
+      test_question =  Question.new({:description => 'mobbed'.*(10)})
+      expect(test_question.save()).to(eq(false))
+    end
 end

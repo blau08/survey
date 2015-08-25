@@ -1,0 +1,51 @@
+<h4>Current Surveys:</h4>
+<ul>
+<% @surveys.all().each() do |survey| %>
+  <li><a href="/surveys/<%= survey.id() %>"><%= survey.description() %></a></li>
+<% end %>
+</ul>
+
+<br>
+
+<div class="well">
+  <h5>Add a new survey:</h5>
+  <form action="/surveys" method="post">
+    <div class="form-group">
+      <label for="description">Survey Description:</label>
+      <input type="text" name="description" id="description" placeholder="Survey Description" autofocus>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<div class="well">
+  <h5>Edit Survey:</h5>
+  <form action="/surveys" method="post">
+    <div class="form-group"
+      <input type="hidden" name="_method" value="patch">
+      <select id="survey_edit" name="survey_edit">
+        <% @surveys.all().each() do |survey| %>
+          <option value="<%= survey.id() %>"><%= survey.description() %></option>
+        <% end %>
+      </select>
+
+      <label for="update_description">Update Description</label>
+      <input type="text" name="update_description" id="update_description" placeholder="Update Description">
+    </div>
+    <button type="submit">Update Description</button>
+  </form>
+</div>
+
+<div class="well">
+  <h5>Delete Survey:</h5>
+  <form action="/surveys" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <select id="survey_delete" name="survey_delete">
+      <% @surveys.all().each() do |survey| %>
+        <option value="<%= survey.id() %>"><%= survey.description() %></option>
+      <% end %>
+    </select>
+    <button type="submit">Delete Survey</button>
+  </form>
+</div>
+<a href="/"><button class="btn btn-primary front-button">Home</button></a>
