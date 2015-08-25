@@ -1,55 +1,61 @@
-<h3><%= @survey.description() %></h3>
+<div class="panel panel-default">
+  <div class="panel-body">
 
-<ul>
-  <% @survey.questions().each() do |question| %>
-    <li><%= question.description() %></li>
-  <% end %>
-</ul>
+    <h3 class="centered-h3"><%= @survey.description() %></h3>
 
-<br>
+    <ul>
+      <% @survey.questions().each() do |question| %>
+        <li><%= question.description() %></li>
+      <% end %>
+    </ul>
 
-<h4>Add question to survey:</h4>
+    <br>
 
-<div class="well">
-  <form action="/surveys/<%= @survey.id() %>" method="post">
-    <div class="form-group">
-      <label for="description">Question:</label>
-      <input type="text" name="description" id="description">
-      <button type="submit">Submit</button>
+    <h4>Add question to survey:</h4>
+
+    <div class="well">
+      <form action="/surveys/<%= @survey.id() %>" method="post">
+        <div class="form-group">
+          <label for="description">Question:</label>
+          <input type="text" name="description" id="description">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
 
-<div class="well">
-  <form action="/surveys/<%= @survey.id() %>" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <div class="form-group">
-      <select id="question_id" name="question_id">
-        <% @survey.questions().each() do |question| %>
-          <option value="<%= question.id() %>"><%= question.description() %></option>
-        <% end %>
-      </select>
+    <div class="well">
+      <form action="/surveys/<%= @survey.id() %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <div class="form-group">
+          <select id="question_id" name="question_id">
+            <% @survey.questions().each() do |question| %>
+              <option value="<%= question.id() %>"><%= question.description() %></option>
+            <% end %>
+          </select>
 
-      <label for="update_description">Updated Question:</label>
-      <input type="text" name="update_description" id="update_description" placeholder="Updated Question">
-      <button type="submit">Update</button>
+          <label for="update_description">Updated Question:</label>
+          <input type="text" name="update_description" id="update_description" placeholder="Updated Question">
+          <button type="submit">Update</button>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
 
-<div class="well">
-  <form action="/surveys/<%= @survey.id() %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <div class="form-group">
-      <h5>Delete question:</h5>
-      <select id="question_id" name="question_id">
-        <% @survey.questions().each() do |question| %>
-          <option value="<%= question.id() %>"><%= question.description() %></option>
-        <% end %>
-      </select>
-      <button class="btn btn-danger" type="submit">Delete</button>
+    <div class="well">
+      <form action="/surveys/<%= @survey.id() %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <div class="form-group">
+          <h5>Delete question:</h5>
+          <select id="question_id" name="question_id">
+            <% @survey.questions().each() do |question| %>
+              <option value="<%= question.id() %>"><%= question.description() %></option>
+            <% end %>
+          </select>
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </div>
+      </form>
     </div>
-  </form>
+    <a href="/surveys"><button class="btn btn-primary front-button">Survey Designer</button></a>
+    <a href="/"><button class="btn btn-primary front-button">Home</button></a>
+
+  </div>
 </div>
-<a href="/surveys"><button class="btn btn-primary front-button">Survey Designer</button></a>
-<a href="/"><button class="btn btn-primary front-button">Home</button></a>

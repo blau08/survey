@@ -1,3 +1,5 @@
+<div class="panel panel-default">
+<div class="panel-body">
 <h4>Current Surveys:</h4>
 <ul>
 <% @surveys.all().each() do |survey| %>
@@ -21,14 +23,13 @@
 <div class="well">
   <h5>Edit Survey:</h5>
   <form action="/surveys" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <select id="survey_edit" name="survey_edit">
+      <% @surveys.all().each() do |survey| %>
+        <option value="<%= survey.id() %>"><%= survey.description() %></option>
+      <% end %>
+    </select>
     <div class="form-group"
-      <input type="hidden" name="_method" value="patch">
-      <select id="survey_edit" name="survey_edit">
-        <% @surveys.all().each() do |survey| %>
-          <option value="<%= survey.id() %>"><%= survey.description() %></option>
-        <% end %>
-      </select>
-
       <label for="update_description">Update Description</label>
       <input type="text" name="update_description" id="update_description" placeholder="Update Description">
     </div>
@@ -49,3 +50,5 @@
   </form>
 </div>
 <a href="/"><button class="btn btn-primary front-button">Home</button></a>
+</div>
+</div>

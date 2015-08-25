@@ -1,8 +1,29 @@
+body {
+background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url('/img/iron-man.jpg') no-repeat center center;
+}
+
 .front-button {
   color: black;
 }
+
 #front-well {
   margin: 40% auto 60% auto;
   text-align: center;
-  max-width: 300px;
+  max-width: 500px;
+  background: black;
+}
+
+.panel {
+  margin: 10% auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.centered-h3 {
+  text-align: center;
 }
