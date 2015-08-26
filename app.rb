@@ -78,6 +78,9 @@ get('/taker') do
 end
 
 get('/view_survey/:id') do
+  question = Question.find(params.fetch('question_id').to_i())
+  update_description = params.fetch('update_description')
+  question.update({:description => update_description})
   @survey = Survey.find(params.fetch('id').to_i())
   erb(:take_survey)
 end
